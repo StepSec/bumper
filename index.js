@@ -9,7 +9,7 @@ import yaml from 'js-yaml';
 import toml from '@iarna/toml';
 import ini from 'ini';
 import semver from 'semver';
-import { Plugin } from 'release';
+import { Plugin } from 'release-git';
 
 const noop = Promise.resolve();
 const isString = value => typeof value === 'string';

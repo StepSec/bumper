@@ -1,32 +1,32 @@
-# Version read/write plugin for StepSec
+# Version read/write plugin for release-git
 
 This plugin reads and/or writes version/manifest files.
 
 ```
-npm install --save-dev @StepSec/bumper
+npm install --save-dev @release-git/bumper
 ```
 
-In [release](https://github.com/StepSec/release) config:
+In [release-git](https://github.com/release-git/release-git) config:
 
 ```json
 "plugins": {
-  "@StepSec/bumper": {
+  "@release-git/bumper": {
     "in": "composer.json",
     "out": "composer.json",
   }
 }
 ```
 
-- Use only the `in` option to _read_ the version from this file in the release process.
-- Use only the `out` option to _write_ the version that was determined by release to this file.
+- Use only the `in` option to _read_ the version from this file in the release-git process.
+- Use only the `out` option to _write_ the version that was determined by release-git to this file.
 - Use both to read _and_ write the `version` property from/to this file.
 
 The `version` from the `in` file will take precedence over the latest Git tag (and the `version` from `package.json` if
-it exists) in release to determine the latest version.
+it exists) in release-git to determine the latest version.
 
-Note that using `package.json` as `out` file may conflict with the npm plugin in release. Remove it from the `out`
+Note that using `package.json` as `out` file may conflict with the npm plugin in release-git. Remove it from the `out`
 file(s), or use
-[`--npm.allowSameVersion`](https://github.com/StepSec/release/blob/master/docs/npm.md#extra-arguments).
+[`--npm.allowSameVersion`](https://github.com/release-git/release-git/blob/master/docs/npm.md#extra-arguments).
 
 The supported file types are:
 
@@ -44,7 +44,7 @@ The fallback type is `text` if the file extension and/or `type` is not known (e.
 
 ```json
 "plugins": {
-  "@StepSec/bumper": {
+  "@release-git/bumper": {
     "in": {
       "file": "VERSION",
       "type": "text/plain"
@@ -61,7 +61,7 @@ To replace all occurences of the current version with the new version in any tex
 
 ```json
 "plugins": {
-  "@StepSec/bumper": {
+  "@release-git/bumper": {
     "out": {
       "file": "file.php",
       "type": "text/php"
@@ -74,7 +74,7 @@ The `out` option can also be an array of files:
 
 ```json
 "plugins": {
-  "@StepSec/bumper": {
+  "@release-git/bumper": {
     "out": ["manifest.json", "bower.json"]
   }
 }
@@ -85,7 +85,7 @@ files to write to:
 
 ```json
 "plugins": {
-  "@StepSec/bumper": {
+  "@release-git/bumper": {
     "out": "dist/*.json"
   }
 }
@@ -96,7 +96,7 @@ The `path` option (default: `"version"`) can be used to change a different prope
 
 ```json
 "plugins": {
-  "@StepSec/bumper": {
+  "@release-git/bumper": {
     "out": {
       "file": "manifest.json",
       "path": "current.version"
@@ -112,8 +112,8 @@ Multiple paths can be provided using an array.
 Options for this plugin can be set from the command line. Some examples:
 
 ```
-StepSec --plugins.@StepSec/bumper.in=composer.json
-StepSec --plugins.@StepSec/bumper.out=composer.json --plugins.@StepSec/bumper.out=manifest.json
+release-git --plugins.@release-git/bumper.in=composer.json
+release-git --plugins.@release-git/bumper.out=composer.json --plugins.@release-git/bumper.out=manifest.json
 ```
 
 - Keys are separated by dots.

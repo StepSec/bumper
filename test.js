@@ -4,7 +4,7 @@ import { EOL } from 'os';
 
 import assert from 'assert';
 import mock from 'mock-fs';
-import { factory, runTasks } from 'release/test/util/index.js';
+import { factory, runTasks } from 'release-git/test/util/index.js';
 import Bumper from './index.js';
 
 mock({
